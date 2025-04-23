@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/mysql', function(){
     try {
-        DB::connection()->getPdo();
+        DB::connection('mysqlAlex')->getPdo();
         echo "Conexão com a base de dados: ". DB::connection()->getDatabaseName();
     } catch (Exception $e) {
         //throw $th;
