@@ -32,45 +32,45 @@ return [
     'connections' => [
 
         
-        'mysql_users' => [
-            'driver' => 'mysql',
-            // 'url' => env('DB_URL'),
-            'host' => 'localhost',
-            'port' => 3306,
-            'database' => 'laravel_mysql_auth',
-            'username' => 'user_laravel_mysql_database',
-            'password' => '52nEG8SOMIF5rEtOY4D5SA8AYed4Po',
-            'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => env('DB_CHARSET', 'utf8mb4'),
-            'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
-            'prefix' => '',
-            'prefix_indexes' => true,
-            'strict' => true,
-            'engine' => null,
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
-        ],
+        // 'mysql_users' => [
+        //     'driver' => 'mysql',
+        //     // 'url' => env('DB_URL'),
+        //     'host' => 'localhost',
+        //     'port' => 3306,
+        //     'database' => 'laravel_mysql_auth',
+        //     'username' => 'user_laravel_mysql_database',
+        //     'password' => '52nEG8SOMIF5rEtOY4D5SA8AYed4Po',
+        //     'unix_socket' => env('DB_SOCKET', ''),
+        //     'charset' => env('DB_CHARSET', 'utf8mb4'),
+        //     'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
+        //     'prefix' => '',
+        //     'prefix_indexes' => true,
+        //     'strict' => true,
+        //     'engine' => null,
+        //     'options' => extension_loaded('pdo_mysql') ? array_filter([
+        //         PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+        //     ]) : [],
+        // ],
 
-        'mysql_app' => [
-            'driver' => 'mysql',
-            // 'url' => env('DB_URL'),
-            'host' => 'localhost',
-            'port' => 3306,
-            'database' => 'laravel_mysql_app',
-            'username' => 'user_laravel_mysql_database',
-            'password' => '52nEG8SOMIF5rEtOY4D5SA8AYed4Po',
-            'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => env('DB_CHARSET', 'utf8mb4'),
-            'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
-            'prefix' => '',
-            'prefix_indexes' => true,
-            'strict' => true,
-            'engine' => null,
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
-        ],
+        // 'mysql_app' => [
+        //     'driver' => 'mysql',
+        //     // 'url' => env('DB_URL'),
+        //     'host' => 'localhost',
+        //     'port' => 3306,
+        //     'database' => 'laravel_mysql_app',
+        //     'username' => 'user_laravel_mysql_database',
+        //     'password' => '52nEG8SOMIF5rEtOY4D5SA8AYed4Po',
+        //     'unix_socket' => env('DB_SOCKET', ''),
+        //     'charset' => env('DB_CHARSET', 'utf8mb4'),
+        //     'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
+        //     'prefix' => '',
+        //     'prefix_indexes' => true,
+        //     'strict' => true,
+        //     'engine' => null,
+        //     'options' => extension_loaded('pdo_mysql') ? array_filter([
+        //         PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+        //     ]) : [],
+        // ],
         // 'mysql' => [
         //     'driver' => 'mysql',
         //     'url' => env('DB_URL'),
@@ -119,5 +119,34 @@ return [
     | such as Memcached. You may define your connection settings here.
     |
     */
+
+    'redis' => [
+
+        'client' => env('REDIS_CLIENT', 'phpredis'),
+
+        'options' => [
+            'cluster' => env('REDIS_CLUSTER', 'redis'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+        ],
+
+        'default' => [
+            'url' => env('REDIS_URL'),
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'username' => env('REDIS_USERNAME'),
+            'password' => env('REDIS_PASSWORD'),
+            'port' => env('REDIS_PORT', '6379'),
+            'database' => env('REDIS_DB', '0'),
+        ],
+
+        'cache' => [
+            'url' => env('REDIS_URL'),
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'username' => env('REDIS_USERNAME'),
+            'password' => env('REDIS_PASSWORD'),
+            'port' => env('REDIS_PORT', '6379'),
+            'database' => env('REDIS_CACHE_DB', '1'),
+        ],
+
+    ],
 
 ];
